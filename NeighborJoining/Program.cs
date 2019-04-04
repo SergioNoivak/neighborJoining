@@ -32,7 +32,56 @@ namespace NeighborJoining
             parMinimo.exibir();
 
             Algoritmos.calcularDistanciaPar(matrizDistancia, parMinimo);
-            //Algoritmos.removerPar(matrizDistancia,parMinimo);
+            var linhaNovoNo = Algoritmos.calcularDistanciaNaoPar(matrizDistancia, parMinimo);
+            Algoritmos.removerPar(matrizDistancia,parMinimo);
+            Algoritmos.adicionarNovoNo(matrizDistancia, linhaNovoNo);
+
+
+
+            matrizQ = Algoritmos.calculoMatrizQ(matrizDistancia);
+            Algoritmos.imprimirMatriz(matrizQ);
+
+
+            parMinimo = Algoritmos.parMinimo(matrizQ);
+            parMinimo.exibir();
+
+            Algoritmos.calcularDistanciaPar(matrizDistancia, parMinimo);
+             linhaNovoNo = Algoritmos.calcularDistanciaNaoPar(matrizDistancia, parMinimo);
+            Algoritmos.removerPar(matrizDistancia, parMinimo);
+            Algoritmos.adicionarNovoNo(matrizDistancia, linhaNovoNo);
+
+
+
+
+
+
+
+
+
+
+            matrizQ = Algoritmos.calculoMatrizQ(matrizDistancia);
+            Algoritmos.imprimirMatriz(matrizQ);
+
+
+            parMinimo = Algoritmos.parMinimo(matrizQ);
+            parMinimo.exibir();
+
+            Algoritmos.calcularDistanciaPar(matrizDistancia, parMinimo);
+            linhaNovoNo = Algoritmos.calcularDistanciaNaoPar(matrizDistancia, parMinimo);
+            Algoritmos.removerPar(matrizDistancia, parMinimo);
+            Algoritmos.adicionarNovoNo(matrizDistancia, linhaNovoNo);
+
+
+
+
+
+
+
+
+
+   
+
+
             Console.Read();
         }
     }

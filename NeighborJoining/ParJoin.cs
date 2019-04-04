@@ -11,11 +11,16 @@ namespace NeighborJoining
        public  int inicio          ;
        public  int fim             ;
        public  double pesoMinimo   ;
+       public double distanciaInicio;
+       public double distanciaFim;
+        
+    
 
         public ParJoin()
         {
             this.inicio = this.fim = -1;
             this.pesoMinimo = Double.MaxValue;
+            distanciaFim = distanciaInicio = -1;
         }
 
         public ParJoin(int inicio,int fim,double pesoMinimo)

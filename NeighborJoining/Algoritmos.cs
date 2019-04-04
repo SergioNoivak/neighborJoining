@@ -11,19 +11,49 @@ namespace NeighborJoining
 
 
 
-        public static void calcularDistanciaPar(List<List<double>> matrizDistancia,ParJoin par)
+        public static void adicionarNovoNo(List<List<double>> matrizDistancia, List<double> linhaNovoNo)
         {
 
-            double distanciaInicio,distanciaFim;
 
+            int i = 0;
+            foreach(var linha in matrizDistancia)
+            {
+                linha.Insert(0, linhaNovoNo[i + 1]);
+                i++;
+            }
 
-            distanciaInicio = 0.5 * matrizDistancia[par.inicio][par.fim] + 1 / (2 * (matrizDistancia.Count - 2)*(calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.inicio)-calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.fim)));
-            distanciaFim = matrizDistancia[par.inicio][par.fim] - distanciaInicio;
+            matrizDistancia.Insert(0, linhaNovoNo);
 
-            Console.WriteLine(Math.Round(distanciaInicio));
-            Console.WriteLine(Math.Round(distanciaFim));
+            Algoritmos.imprimirMatriz(matrizDistancia);
 
         }
+
+
+        public static void calcularDistanciaPar(List<List<double>> matrizDistancia,ParJoin par)
+        {
+            double distanciaInicio,distanciaFim;
+            par.distanciaInicio = 0.5 * matrizDistancia[par.inicio][par.fim] + 1 / (2 * (matrizDistancia.Count - 2)*(calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.inicio)-calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.fim)));
+            par.distanciaFim = matrizDistancia[par.inicio][par.fim] - par.distanciaInicio;
+
+        }
+
+
+        public static List<double> calcularDistanciaNaoPar(List<List<double>> matrizDistancia, ParJoin par)
+        {
+            List<double> linhaNovoNo = new List<double>();
+            linhaNovoNo.Add(0.0);
+            for(int i=0; i< matrizDistancia.Count;i++)
+            {
+                if (i != par.inicio && i != par.fim)
+                {
+                    double distancia = 0.5 * (matrizDistancia[par.inicio][i] + matrizDistancia[par.fim][i] - matrizDistancia[par.inicio][par.fim]);
+                    linhaNovoNo.Add(distancia);
+                }
+            }
+            return linhaNovoNo;
+        }
+
+
 
 
         public static void removerPar(List<List<double>> matrizDistancia, ParJoin par)
@@ -46,7 +76,6 @@ namespace NeighborJoining
                 linha.Remove(ponteiroElementoFimColuna);
             }
 
-            imprimirMatriz(matrizDistancia);
 
 
         }
