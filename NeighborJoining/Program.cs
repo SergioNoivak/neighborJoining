@@ -31,7 +31,8 @@ namespace NeighborJoining
             ParJoin parMinimo= Algoritmos.parMinimo(matrizQ);
             parMinimo.exibir();
 
-            Algoritmos.removerPar(matrizDistancia,parMinimo);
+            Algoritmos.calcularDistanciaPar(matrizDistancia, parMinimo);
+            //Algoritmos.removerPar(matrizDistancia,parMinimo);
             Console.Read();
         }
     }

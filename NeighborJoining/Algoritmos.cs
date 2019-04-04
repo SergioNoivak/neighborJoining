@@ -10,6 +10,22 @@ namespace NeighborJoining
     {
 
 
+
+        public static void calcularDistanciaPar(List<List<double>> matrizDistancia,ParJoin par)
+        {
+
+            double distanciaInicio,distanciaFim;
+
+
+            distanciaInicio = 0.5 * matrizDistancia[par.inicio][par.fim] + 1 / (2 * (matrizDistancia.Count - 2)*(calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.inicio)-calculoFatorDistanciaLinha(matrizDistancia,matrizDistancia.Count,par.fim)));
+            distanciaFim = matrizDistancia[par.inicio][par.fim] - distanciaInicio;
+
+            Console.WriteLine(Math.Round(distanciaInicio));
+            Console.WriteLine(Math.Round(distanciaFim));
+
+        }
+
+
         public static void removerPar(List<List<double>> matrizDistancia, ParJoin par)
         {
             imprimirMatriz(matrizDistancia);
